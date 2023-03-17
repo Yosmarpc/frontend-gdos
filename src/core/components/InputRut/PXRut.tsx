@@ -10,7 +10,7 @@ const PXRut = (props: any) => {
 
   const validateRut = (rut: any) => {
     setIsValid(validate(rut) || rut === '')
-    props.sendRut(rut)
+    // props.sendRut(rut)
   }
 
   return (
