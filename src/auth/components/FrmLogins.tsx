@@ -7,15 +7,18 @@ import { Button } from 'react-bootstrap'
 import { ItemUser } from '../models/IUserItem'
 import { validateEmail } from '../../core/helpers/ValidateEmail/ValidateEmail'
 import { useSnackbar } from 'notistack'
+import { useAppDispatch } from '../../store/Store'
+// import { useNavigate } from 'react-router-dom'
+import { loginUserStore } from '../../store/user'
+import { DataUser } from '../../core/helpers/Dummy/dum-user/DataUser'
+import { PrivateRoutes } from '../../core/constants/TypeRouter'
 // import { PublicRoutes } from '../../../Constants/PublicRoutes'
 
 // import { webApiService } from '../../../Services'
-// import { useAppDispatch } from '../../../Store/Store'
 // import { loginUserStore } from '../../../Store/user'
-// import { validateEmail } from '../../../Utils/validate'
 
 const FrmLogins = () => {
-  // const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
   // const navigate = useNavigate()
   const { enqueueSnackbar } = useSnackbar()
   const [data, setData] = React.useState<{
@@ -26,12 +29,25 @@ const FrmLogins = () => {
   }>({
     loading: false,
     dataResult: [],
-    email: '',
-    password: ''
+    email: 'admin@admin.com',
+    password: 'admin'
   })
 
   const loadLogin = (email: string, password: string) => {
-    enqueueSnackbar('indicate parameters', { variant: 'info' })
+    setData({ ...data, loading: true })
+
+    if (email === '' || password === '') {
+      enqueueSnackbar('indique parametros para iniciar sesión', { variant: 'info' })
+      setData({ ...data, loading: false })
+    } else if (email === 'admin@admin.com' && password === 'admin') {
+      dispatch(loginUserStore({ ...DataUser, active: true }))
+      setData({ ...data, loading: false })
+      window.location.replace(PrivateRoutes.APP)
+    } else {
+      enqueueSnackbar('Credeciales no validas', { variant: 'error' })
+      setData({ ...data, loading: false })
+    }
+
     /* if (email === '' || password === '') {
       enqueueSnackbar('indicate parameters', { variant: 'info' })
     } else {
@@ -67,7 +83,7 @@ const FrmLogins = () => {
 
   return (
     <div className='row my-4 shadow p-3 mb-5 bg-body-tertiary rounded'>
-      <div className='col-12' />
+
       <div className='col-12 my-4'>
         <TextField
           label='Email'

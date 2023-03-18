@@ -1,11 +1,12 @@
 import { Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material'
 import React from 'react'
-import { InboxIcon, MailIcon } from '../../../assets/Icons/Icons'
 import { drawerWidth } from '../../constants/Constants'
-import { navConfig } from '../../constants/MenuNav'
+
 import { colorBluePrimary } from '../../constants/Colores'
 import UserLogin from '../../components/UserLogin/UserLogin'
-
+import LogoGdos from '../../../assets/Img/logo-gdos.png'
+import { navConfig } from '../../helpers/Dummy/dum-menu/MenuNav'
+import { SignOff } from '../../components/SignOff/SignOff'
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -21,7 +22,12 @@ const AppDrawer = (props: Props) => {
   const { window, mobileOpen, handleDrawerToggle } = props
   const drawer = (
     <div>
-      <Toolbar sx={{ backgroundColor: colorBluePrimary }} />
+      <Toolbar sx={{ backgroundColor: colorBluePrimary, display: 'flex' }}>
+        <div className='rounded mx-auto d-block'>
+          <img src={LogoGdos} alt='logo-gdos' width='100' height='60' />
+        </div>
+
+      </Toolbar>
       <div className='d-flex justify-content-center'>
         <UserLogin />
       </div>
@@ -31,7 +37,7 @@ const AppDrawer = (props: Props) => {
           <ListItem key={text.title} disablePadding>
             <ListItemButton component='a' href={text.path}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {text.icon}
               </ListItemIcon>
               <ListItemText primary={text.title} />
             </ListItemButton>
@@ -40,6 +46,7 @@ const AppDrawer = (props: Props) => {
       </List>
       <Divider />
 
+      <SignOff />
     </div>
 
   )

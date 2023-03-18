@@ -7,6 +7,9 @@ import { SnackbarProvider } from 'notistack'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider, createTheme } from '@mui/material'
 import { colorBlackSecondary, colorBluePrimary } from './core/constants/Colores'
+import { Provider as ReduxProvider } from 'react-redux'
+import store from './store/Store'
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 )
@@ -39,15 +42,18 @@ const theme = createTheme({
 
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <SnackbarProvider maxSnack={4} autoHideDuration={5000}>
+    <ReduxProvider store={store}>
+      <ThemeProvider theme={theme}>
 
-          <App />
+        <BrowserRouter>
+          <SnackbarProvider maxSnack={4} autoHideDuration={5000}>
 
-        </SnackbarProvider>
-      </BrowserRouter>
-    </ThemeProvider>
+            <App />
+
+          </SnackbarProvider>
+        </BrowserRouter>
+      </ThemeProvider>
+    </ReduxProvider>
 
   </React.StrictMode>
 )

@@ -1,16 +1,24 @@
-import React, { useMemo } from 'react'
+import React, { useEffect } from 'react'
 import FrmLogins from './components/FrmLogins'
 import { Box } from '@mui/material'
 import { TITLE_PROJECT } from '../core/constants/Setting'
-import { DataUser } from '../core/constants/DataUser'
-import { PrivateRoutes } from '../core/constants/TypeRouter'
-import { Navigate } from 'react-router-dom'
 
+import { PrivateRoutes } from '../core/constants/TypeRouter'
+import { useNavigate } from 'react-router-dom'
+import { UserKey } from '../store/user'
+let userStore: any = ''
+
+try {
+  userStore = JSON.parse(localStorage.getItem(UserKey) || '')
+} catch (error) {
+
+}
 const LoginsPage = () => {
-  useMemo(() => {
-    console.log('DataUser.active ==>', DataUser.active)
-    if (DataUser.active) {
-      return <Navigate to={PrivateRoutes.APP} />
+  const navigate = useNavigate()
+  useEffect(() => {
+    console.log('DataUser.active ==>', userStore.active)
+    if (userStore.active) {
+      navigate(PrivateRoutes.APP)
     }
   }, [])
 
