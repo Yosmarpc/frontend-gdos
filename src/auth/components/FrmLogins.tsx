@@ -3,38 +3,35 @@ import { TextField } from '@mui/material'
 import React from 'react'
 import { Button } from 'react-bootstrap'
 
-// import { useNavigate } from 'react-router-dom'
 import { ItemUser } from '../models/IUserItem'
 import { validateEmail } from '../../core/helpers/ValidateEmail/ValidateEmail'
 import { useSnackbar } from 'notistack'
 import { useAppDispatch } from '../../store/Store'
-// import { useNavigate } from 'react-router-dom'
+
 import { loginUserStore } from '../../store/user'
 import { DataUser } from '../../core/helpers/Dummy/dum-user/DataUser'
 import { PrivateRoutes } from '../../core/constants/TypeRouter'
-// import { PublicRoutes } from '../../../Constants/PublicRoutes'
-
-// import { webApiService } from '../../../Services'
-// import { loginUserStore } from '../../../Store/user'
 
 const FrmLogins = () => {
   const dispatch = useAppDispatch()
-  // const navigate = useNavigate()
+
   const { enqueueSnackbar } = useSnackbar()
   const [data, setData] = React.useState<{
     loading: boolean
     dataResult: ItemUser[]
     email: string
     password: string
+    isError: boolean
   }>({
     loading: false,
     dataResult: [],
     email: 'admin@admin.com',
-    password: 'admin'
+    password: 'admin',
+    isError: false
   })
 
   const loadLogin = (email: string, password: string) => {
-    setData({ ...data, loading: true })
+    setData({ ...data, loading: true, isError: false })
 
     if (email === '' || password === '') {
       enqueueSnackbar('indique parametros para iniciar sesión', { variant: 'info' })
@@ -45,7 +42,7 @@ const FrmLogins = () => {
       window.location.replace(PrivateRoutes.APP)
     } else {
       enqueueSnackbar('Credeciales no validas', { variant: 'error' })
-      setData({ ...data, loading: false })
+      setData({ ...data, loading: false, isError: true })
     }
 
     /* if (email === '' || password === '') {

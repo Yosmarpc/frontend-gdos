@@ -16,7 +16,6 @@ try {
 const LoginsPage = () => {
   const navigate = useNavigate()
   useEffect(() => {
-    console.log('DataUser.active ==>', userStore.active)
     if (userStore.active) {
       navigate(PrivateRoutes.APP)
     }

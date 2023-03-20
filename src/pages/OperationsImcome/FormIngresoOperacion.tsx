@@ -9,15 +9,16 @@ import {
   Divider
 } from '@mui/material'
 import React, { useState } from 'react'
-import TblListDocument from './components/TblListDocument'
+
 import ModalAdjunto from './components/Modal/ModalAdjunto'
 import { DataForm } from './models/IForm'
 import SectionHeader from '../../core/components/SectionsHeaders/SectionHeader'
 import TitleHeader from '../../core/components/TitleHeader/TitleHeader'
 import PXRut from '../../core/components/InputRut/PXRut'
 import { SIZE_INPUT } from '../../core/constants/Setting'
-import { AddCircleIcon } from '../../assets/Icons/Icons'
 import { Button } from 'react-bootstrap'
+import { BtnAdjunto } from '../../core/components/BtnAdjunto/BtnAdjunto'
+import { validateEmail } from '../../core/helpers/ValidateEmail/ValidateEmail'
 
 const FormIngresoOperacion = (props: any) => {
   const [dataForm, setForm] = useState<DataForm>({
@@ -45,9 +46,10 @@ const FormIngresoOperacion = (props: any) => {
         <Grid container spacing={{ xs: 2, md: 2 }}>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <div style={{ borderRadius: '15px' }} className='shadow p-3 mb-5 bg-body-tertiary rounded h-100'>
-              <TitleHeader title='Cliente' />
 
               <Grid container spacing={{ xs: 2, md: 2 }}>
+                <Grid item xs={6} sm={6} md={6} lg={6} xl={6}> <TitleHeader title='Cliente' /></Grid>
+                <Grid item xs={6} sm={6} md={6} lg={6} xl={6}> <div className='d-flex float-end '> <BtnAdjunto /></div></Grid>
                 <Grid item xs={12} sm={12} md={8} lg={4} xl={4}>
                   <PXRut />
                 </Grid>
@@ -77,6 +79,15 @@ const FormIngresoOperacion = (props: any) => {
                     onChange={(e) => {
                       setForm({ ...dataForm, email_client: e.target.value })
                     }}
+                    onBlur={e => {
+                      validateEmail(dataForm.email_client)
+                    }}
+                    error={dataForm.email_client !== '' && !validateEmail(dataForm.email_client)}
+                    helperText={
+                      dataForm.email_client !== '' && !validateEmail(dataForm.email_client)
+                        ? 'correo no valido'
+                        : ''
+                    }
                     fullWidth
                     size={SIZE_INPUT}
                     margin='dense'
@@ -142,23 +153,6 @@ const FormIngresoOperacion = (props: any) => {
                     <Divider />
                   </Box>
                 </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                  <div>
-
-                    <TitleHeader title='Adjunto de documentos' />
-
-                    <div className='text-end'>
-                      <Button
-                        variant='primary' onClick={handleOpenModal}
-                      >
-                        Adjuntar nuevo documento <AddCircleIcon />
-                      </Button>
-                    </div>
-                    <div className='my-3' />
-                    <TblListDocument />
-
-                  </div>
-                </Grid>
 
               </Box>
 
@@ -170,13 +164,16 @@ const FormIngresoOperacion = (props: any) => {
       </Box>
 
       <Box my={2}>
+
         <Box my={4} sx={{ display: 'flex', alignContent: 'right', justifyContent: 'right', alignItems: 'right' }}>
           <Button
             variant='primary'
           >
             Crear Solicitud
           </Button>
+
         </Box>
+
       </Box>
     </div>
   )
