@@ -1,4 +1,4 @@
-export interface DataForm {
+export interface IOperationsImcome {
     type_operations: number | string;
     type_persona: number | string;
     rut: string;
