@@ -157,6 +157,30 @@ const FormIngresoOperacion = (props: any) => {
                 </Grid>
 
               </Grid>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  p: 1,
+                  m: 1,
+                  padding: 0,
+                  bgcolor: 'background.paper',
+                  borderRadius: 1
+                }}
+              >
+                <Button
+                  variant='danger'
+                >
+                  Cancelar
+                </Button>
+
+                <Button
+                  variant='primary'
+                >
+                  Crear Solicitud
+                </Button>
+
+              </Box>
             </div>
           </Grid>
 
@@ -164,29 +188,6 @@ const FormIngresoOperacion = (props: any) => {
 
       </Box>
 
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          p: 1,
-          m: 1,
-          bgcolor: 'background.paper',
-          borderRadius: 1
-        }}
-      >
-        <Button
-          variant='danger'
-        >
-          Cancelar
-        </Button>
-
-        <Button
-          variant='primary'
-        >
-          Crear Solicitud
-        </Button>
-
-      </Box>
     </div>
   )
 }
