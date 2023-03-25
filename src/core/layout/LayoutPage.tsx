@@ -19,8 +19,8 @@ const LayoutPage = () => {
         <AppDrawer handleDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} />
         <Box
           component='main'
-          sx={{ flexGrow: 1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
-          className='pt-4 p-lg-5'
+          sx={{ flexGrow: 1, width: { md: `calc(100% - ${drawerWidth}px)` } }}
+          className='pt-2 p-lg-5'
         >
           <Outlet />
         </Box>
