@@ -9,16 +9,15 @@ const CardCant = () => {
         direction='row'
         justifyContent='space-between'
         alignItems='center'
-        p={3}
         spacing={1}
-
+        my={2}
       >
-        <div className='carrousel-mobil' />
-        <Grid item xs={6} sm={6} md={6} lg={3} xl={3}>
+
+        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
           <Card>
             <CardContent className='bg-info gy-2'>
               <div className='row'>
-                <div className='col-6 text-white my-2'>
+                <div className='col-6 text-white my-2 fw-semibold'>
                   Total Solicitudes
                 </div>
                 <div className='col-6 text-end fs-3 text-white my-3'>
@@ -28,11 +27,11 @@ const CardCant = () => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={6} sm={6} md={6} lg={3} xl={3}>
+        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
           <Card>
             <CardContent className='bg-warning gy-2'>
               <div className='row'>
-                <div className='col-6 text-white my-2'>
+                <div className='col-6 text-white my-2 fw-semibold'>
                   Solicitudes Pendientes
                 </div>
                 <div className='col-6 text-end fs-3 text-white my-3'>
@@ -42,11 +41,11 @@ const CardCant = () => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={6} sm={6} md={6} lg={3} xl={3}>
+        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
           <Card>
             <CardContent className='bg-success gy-2'>
               <div className='row'>
-                <div className='col-6 text-white my-2'>
+                <div className='col-6 text-white my-2 fw-semibold'>
                   Solicitudes en Procesos
                 </div>
                 <div className='col-6 text-end fs-3 text-white my-3'>
@@ -56,11 +55,11 @@ const CardCant = () => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={6} sm={6} md={6} lg={3} xl={3}>
+        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
           <Card>
             <CardContent className='bg-danger gy-2'>
               <div className='row'>
-                <div className='col-6 text-white my-2'>
+                <div className='col-6 text-white my-2 fw-semibold'>
                   Rechazadas / Pausadas
                 </div>
                 <div className='col-6 text-end fs-3 text-white my-3'>

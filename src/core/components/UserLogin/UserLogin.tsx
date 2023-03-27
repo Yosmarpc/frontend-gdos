@@ -13,15 +13,15 @@ const UserLogin = () => {
             src='https://yt3.ggpht.com/WHm-naxhgyr1MuaS6r8Oou3gF-I0sQH3q1KiBs1gt_UZkiJWEDRTvwTHmhguN9kZQuvnv01SEA=s176-c-k-c0x00ffffff-no-rj'
             className='rounded-circle'
             alt={DataUser.name}
-            width='60'
-            height='60'
+            width='30'
+            height='30'
           />
         </div>
         <div className='my-2'>
-          <div className='fs-6 text-center fw-bold'>{DataUser.name}</div>
-          <div className='text-center small'>{DataUser.profile}</div>
+          <div className='fs-6 text-left fw-bold'>{DataUser.name}</div>
+          <div className='text-left small'>{DataUser.profile}</div>
           <div className='d-flex justify-content-center my-2'>
-            <Button variant='primary' className='btn-sm' href={PublicRoutes.LOGIN}>Detalle Perfil</Button>
+            <Button variant='link' className='btn-sm' href={PublicRoutes.LOGIN}>Detalle Perfil</Button>
           </div>
         </div>
 

@@ -1,4 +1,4 @@
-import { Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material'
+import { Box, Collapse, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material'
 import React from 'react'
 import { drawerWidth } from '../../constants/Constants'
 
@@ -7,6 +7,8 @@ import UserLogin from '../../components/UserLogin/UserLogin'
 import LogoGdos from '../../../assets/Img/logo-gdos.png'
 import { navConfig } from '../../helpers/Dummy/dum-menu/MenuNav'
 import { SignOff } from '../../components/SignOff/SignOff'
+import { ExpandLess, ExpandMore } from '@mui/icons-material'
+import { InboxIcon } from '../../../assets/Icons/Icons'
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -20,6 +22,12 @@ interface Props {
 
 const AppDrawer = (props: Props) => {
   const { window, mobileOpen, handleDrawerToggle } = props
+  const [open, setOpen] = React.useState(true)
+
+  const handleClick = () => {
+    setOpen(!open)
+  }
+
   const drawer = (
     <div>
       <Toolbar sx={{ backgroundColor: colorBluePrimary, display: 'flex' }}>
@@ -32,18 +40,42 @@ const AppDrawer = (props: Props) => {
         <UserLogin />
       </div>
       <Divider />
-      <List>
-        {navConfig.map((text, index) => (
-          <ListItem key={text.title} disablePadding>
-            <ListItemButton component='a' href={text.path}>
-              <ListItemIcon>
-                {text.icon}
-              </ListItemIcon>
-              <ListItemText primary={text.title} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <Box>
+        <List sx={{
+          width: '100%',
+          maxWidth: 360,
+          bgcolor: 'background.paper',
+          position: 'relative',
+          overflow: 'auto',
+          height: 360,
+          '& ul': { padding: 0 }
+        }}
+        >
+
+          <ListItemButton onClick={handleClick}>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary='Menú' />
+            {open ? <ExpandLess /> : <ExpandMore />}
+          </ListItemButton>
+          <Collapse in={open} timeout='auto' unmountOnExit>
+            <List component='div' disablePadding>
+              {navConfig.map((text, index) => (
+                <ListItem key={text.title} disablePadding>
+                  <ListItemButton component='a' href={text.path}>
+                    <ListItemIcon>
+                      {text.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={text.title} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          </Collapse>
+
+        </List>
+      </Box>
       <Divider />
 
       <SignOff />

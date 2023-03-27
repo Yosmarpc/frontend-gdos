@@ -1,14 +1,33 @@
-import { Box, Grid } from '@mui/material'
+import { Box, Card, CardContent, Grid } from '@mui/material'
 import React from 'react'
 import CardCant from './components/CardCant/CardCant'
+import TblSolicitud from './components/TblSolicitud/TblSolicitud'
+import BtnDescargarExcel from '../../core/components/BtnDescargarExcel/BtnDescargarExcel'
+import GraficoSolicitud from './components/Grafico/graficoSolicitud/GraficoSolicitud'
+import FilterTblSolicitud from './components/TblSolicitud/components/FilterTblSolicitud/FilterTblSolicitud'
 
 const PageDashboard = () => {
   return (
     <div>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1 }} my={4}>
         <Grid container spacing={2}>
+          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+            <Card className='h-100'>
+              <CardContent>
+                <CardCant />
+              </CardContent>
+            </Card>
+
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+            <GraficoSolicitud />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+            <FilterTblSolicitud />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={6} xl={6} sx={{ display: 'flex', justifyContent: 'right' }}><BtnDescargarExcel /></Grid>
           <Grid item xs={12}>
-            <CardCant />
+            <TblSolicitud />
           </Grid>
         </Grid>
       </Box>
