@@ -16,8 +16,11 @@ import Switch from '@mui/material/Switch'
 import { Button } from '@mui/material'
 
 import { Order, getComparator, stableSort } from '../../../../core/helpers/TblFunctions/TblFunctions'
-import { useDetectWidth } from '../../../../core/constants/UseResponsive'
+
 import { EnhancedTableHead } from './components/EnhancedTableHead'
+
+import { statusSla, statusSlaColor } from '../../../../core/helpers/FuctionsSla/FunctionsSla'
+import { BootstrapTooltip } from '../../../../core/components/Tooltips/Tooltips'
 
 export interface Data {
   numberOrder: number;
@@ -51,8 +54,9 @@ function createData (
 
 const rows: any = [
   createData(1, 'Roberto Salas', '25-03-2023', '25-03-2023', 'INGRESADA', '1', 'Roberto Salas'),
-  createData(2, 'Yosmar Hinestroza', '24-03-2023', '25-03-2023', 'TOMADA', '2', 'Roberto Salas'),
-  createData(3, 'Juan Flores', '25-03-2023', '25-03-2023', 'INGRESADA', '2', 'Roberto Salas')
+  createData(2, 'Yosmar Hinestroza', '24-03-2023', '25-03-2023', 'EN REVISIÓN', '12', 'Roberto Salas'),
+  createData(3, 'Juan Flores', '25-03-2023', '25-03-2023', 'INGRESADA', '21', 'Roberto Salas'),
+  createData(4, 'Ricardo Bastardo', '25-03-2023', '25-03-2023', 'EN REVISIÓN', '11', 'Roberto Salas')
 ]
 
 export default function TblSolicitud () {
@@ -62,7 +66,6 @@ export default function TblSolicitud () {
   const [page, setPage] = React.useState(0)
   const [dense, setDense] = React.useState(false)
   const [rowsPerPage, setRowsPerPage] = React.useState(5)
-  const [isWidth] = React.useState(useDetectWidth('(min-width:500px)'))
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
@@ -183,7 +186,10 @@ export default function TblSolicitud () {
                       <TableCell align='center'>{row.dateRegister}</TableCell>
                       <TableCell align='center'>{row.dateUpdate}</TableCell>
                       <TableCell align='center'><Button variant='outlined' size='small' color='primary'>{row.status}</Button></TableCell>
-                      <TableCell align='center'><Button variant='outlined' size='small' color='success'>{row.sla}</Button></TableCell>
+                      <BootstrapTooltip title={statusSla(row.sla)}>
+                        <TableCell align='center' style={{ backgroundColor: statusSlaColor(row.sla), fontWeight: 700, color: '#fff' }}>{row.sla}</TableCell>
+                      </BootstrapTooltip>
+
                       <TableCell align='center'>{row.assignedUser}</TableCell>
                     </TableRow>
                   )
