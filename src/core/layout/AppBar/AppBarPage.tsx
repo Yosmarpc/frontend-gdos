@@ -1,6 +1,6 @@
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material'
 import React from 'react'
-import { ArrowsLeft, MenuIcon } from '../../../assets/Icons/Icons'
+import { MenuIcon } from '../../../assets/Icons/Icons'
 import { drawerWidth } from '../../constants/Constants'
 import { TITLE_PROJECT } from '../../constants/Setting'
 import { colorBlueThree, colorTextWhite } from '../../constants/Colores'
@@ -27,7 +27,7 @@ const AppBarPage = (props: any) => {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' noWrap component='div'>
-            <div className='text-white'><ArrowsLeft onClick={props.handleDrawerToggle} sx={{ cursor: 'pointer', mr: 2 }} /> {TITLE_PROJECT}</div>
+            <div className='text-white'> {TITLE_PROJECT}</div>
           </Typography>
         </Toolbar>
       </AppBar>

@@ -19,7 +19,7 @@ const LoginsPage = () => {
     if (userStore.active) {
       navigate(PrivateRoutes.APP)
     }
-  }, [])
+  }, [navigate])
 
   return (
     <section className='h-100'>

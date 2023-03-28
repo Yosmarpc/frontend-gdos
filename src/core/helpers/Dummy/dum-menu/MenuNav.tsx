@@ -18,6 +18,36 @@ export const navConfig = [
     icon: <HomeSharpIcon />
   },
   {
+    title: 'Reasignar Operaciones',
+    path: '',
+    icon: <HomeSharpIcon />
+  },
+  {
+    title: 'Supención / Aborto de Operación',
+    path: '',
+    icon: <HomeSharpIcon />
+  },
+  {
+    title: 'Avance express de etapas / Redireccionar flujo',
+    path: '',
+    icon: <HomeSharpIcon />
+  },
+  {
+    title: 'Corrección de Datos asociados a la Operación',
+    path: '',
+    icon: <HomeSharpIcon />
+  },
+  {
+    title: 'Factura asociadas a DTE',
+    path: '',
+    icon: <HomeSharpIcon />
+  },
+  {
+    title: 'Solicitud de Pago',
+    path: '',
+    icon: <HomeSharpIcon />
+  },
+  {
     title: 'Reporte',
     path: '',
     icon: <HomeSharpIcon />

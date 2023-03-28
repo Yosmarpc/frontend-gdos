@@ -59,3 +59,14 @@ code {
     transform: rotate(360deg);
   }
 }
+
+.carrousel-mobil {
+  display: grid;
+  grid-auto-flow: column;
+  scroll-behavior: auto;
+  gap: 1.2rem;
+  overflow-y: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}

@@ -1,9 +1,11 @@
 import React from 'react'
-import SectionHeader from '../../core/components/SectionsHeaders/SectionHeader'
+import PageDashboard from '../Dashboard/PageDashboard'
 
 const HomePage = () => {
   return (
-    <div>  <SectionHeader title='Bienvenido' /></div>
+    <div>
+      <PageDashboard />
+    </div>
   )
 }
 
